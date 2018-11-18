@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>设置</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 200ms ease;
+				transition: transform 200ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 44px;
+				background-color: #f7f7f8;
+			}
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 200ms ease, -webkit-transform 200ms ease;
+				transition: opacity 200ms ease, transform 200ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			.mui-page .mui-table-view:first-child {
+				margin-top: 15px;
+			}
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			.mui-table-view {
+				margin-top: 20px;
+			}
+			.mui-table-view:after {
+				height: 0;
+			}
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			.mui-content-padded {
+				margin: 10px 0px;
+			}
+			.mui-locker {
+				margin: 35px auto;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">设置</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						<a id="rate" class="mui-navigate-right">评分鼓励</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" open-type="common" href="pages/feedback.html">
+							问题反馈
+						</a>
+					</li>
+					<!--<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" open-type="common" href="pages/locker-dom.html">
+							设置锁屏图案
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						使用手势解锁
+						<div id="lockState" class="mui-switch">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+
+
+
+	</body>
+	<script src="./js/mui.min.js "></script>
+	<script src="./js/mui.view.js "></script>
+	<script>
+		mui.init();
+		
+		 //初始化单页的区域滚动
+		mui('.mui-scroll-wrapper').scroll();
+
+			//去评分
+		document.getElementById("rate").addEventListener('tap', function() {
+			if (mui.os.ios) {
+				location.href = 'https://itunes.apple.com/cn/app/hui-hui-da-ka/id1116482144?mt=8';
+			} else if (mui.os.android) {
+				plus.runtime.openURL("market://details?id=com.birdzhang.huihuisignin", function(e) {
+					plus.runtime.openURL("market://details?id=com.birdzhang.huihuisignin", function(e) {
+						plus.runtime.openURL("market://details?id=com.birdzhang.huihuisignin", function(e) {	//
+							mui.alert("360手机助手、应用宝、豌豆荚，你一个都没装，暂时无法评分，感谢支持");
+						},"com.wandoujia.phoenix2");
+					}, "com.qihoo.appstore");
+				}, "com.tencent.android.qqdownloader");
+			}
+		});
+
+	</script>
+
+</html>
